@@ -1,0 +1,231 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "Fody/6.9.3": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
+      "Mono.Cecil/0.11.6": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Mono.Cecil.Mdb.dll": {
+            "related": ".pdb"
+          },
+          "lib/netstandard2.0/Mono.Cecil.Pdb.dll": {
+            "related": ".pdb"
+          },
+          "lib/netstandard2.0/Mono.Cecil.Rocks.dll": {
+            "related": ".pdb"
+          },
+          "lib/netstandard2.0/Mono.Cecil.dll": {
+            "related": ".Mdb.pdb;.pdb;.Pdb.pdb;.Rocks.pdb"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Mono.Cecil.Mdb.dll": {
+            "related": ".pdb"
+          },
+          "lib/netstandard2.0/Mono.Cecil.Pdb.dll": {
+            "related": ".pdb"
+          },
+          "lib/netstandard2.0/Mono.Cecil.Rocks.dll": {
+            "related": ".pdb"
+          },
+          "lib/netstandard2.0/Mono.Cecil.dll": {
+            "related": ".Mdb.pdb;.pdb;.Pdb.pdb;.Rocks.pdb"
+          }
+        }
+      },
+      "ExecutionContextTracker/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/ExecutionContextTracker.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ExecutionContextTracker.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Fody/6.9.3": {
+      "sha512": "1CUGgFdyECDKgi5HaUBhdv6k+VG9Iy4OCforGfHyar3xQXAJypZkzymgKtWj/4SPd6nSG0Qi7NH71qHrDSZLaA==",
+      "type": "package",
+      "path": "fody/6.9.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Fody.targets",
+        "fody.6.9.3.nupkg.sha512",
+        "fody.nuspec",
+        "package_icon.png",
+        "package_readme.md",
+        "tasks/net472/FodyCommon.dll",
+        "tasks/net472/FodyHelpers.dll",
+        "tasks/net472/FodyHelpers.xml",
+        "tasks/net472/FodyIsolated.dll",
+        "tasks/net472/FodyTasks.dll",
+        "tasks/net472/Mono.Cecil.Pdb.dll",
+        "tasks/net472/Mono.Cecil.Pdb.pdb",
+        "tasks/net472/Mono.Cecil.Rocks.dll",
+        "tasks/net472/Mono.Cecil.Rocks.pdb",
+        "tasks/net472/Mono.Cecil.dll",
+        "tasks/net472/Mono.Cecil.pdb",
+        "tasks/netstandard2.0/FodyCommon.dll",
+        "tasks/netstandard2.0/FodyHelpers.dll",
+        "tasks/netstandard2.0/FodyHelpers.xml",
+        "tasks/netstandard2.0/FodyIsolated.dll",
+        "tasks/netstandard2.0/FodyTasks.dll",
+        "tasks/netstandard2.0/Mono.Cecil.Pdb.dll",
+        "tasks/netstandard2.0/Mono.Cecil.Pdb.pdb",
+        "tasks/netstandard2.0/Mono.Cecil.Rocks.dll",
+        "tasks/netstandard2.0/Mono.Cecil.Rocks.pdb",
+        "tasks/netstandard2.0/Mono.Cecil.dll",
+        "tasks/netstandard2.0/Mono.Cecil.pdb"
+      ]
+    },
+    "Mono.Cecil/0.11.6": {
+      "sha512": "f33RkDtZO8VlGXCtmQIviOtxgnUdym9xx/b1p9h91CRGOsJFxCFOFK1FDbVt1OCf1aWwYejUFa2MOQyFWTFjbA==",
+      "type": "package",
+      "path": "mono.cecil/0.11.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Mono.Cecil.Mdb.dll",
+        "lib/net40/Mono.Cecil.Mdb.pdb",
+        "lib/net40/Mono.Cecil.Pdb.dll",
+        "lib/net40/Mono.Cecil.Pdb.pdb",
+        "lib/net40/Mono.Cecil.Rocks.dll",
+        "lib/net40/Mono.Cecil.Rocks.pdb",
+        "lib/net40/Mono.Cecil.dll",
+        "lib/net40/Mono.Cecil.pdb",
+        "lib/netstandard2.0/Mono.Cecil.Mdb.dll",
+        "lib/netstandard2.0/Mono.Cecil.Mdb.pdb",
+        "lib/netstandard2.0/Mono.Cecil.Pdb.dll",
+        "lib/netstandard2.0/Mono.Cecil.Pdb.pdb",
+        "lib/netstandard2.0/Mono.Cecil.Rocks.dll",
+        "lib/netstandard2.0/Mono.Cecil.Rocks.pdb",
+        "lib/netstandard2.0/Mono.Cecil.dll",
+        "lib/netstandard2.0/Mono.Cecil.pdb",
+        "mono.cecil.0.11.6.nupkg.sha512",
+        "mono.cecil.nuspec"
+      ]
+    },
+    "ExecutionContextTracker/1.0.0": {
+      "type": "project",
+      "path": "../ExecutionContextTracker/ExecutionContextTracker.csproj",
+      "msbuildProject": "../ExecutionContextTracker/ExecutionContextTracker.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "ExecutionContextTracker >= 1.0.0",
+      "Fody >= 6.9.3",
+      "Mono.Cecil >= 0.11.6"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\anusingh34\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\anusingh34\\source\\repos\\ConsoleApp2\\ExecutionTracker.Fody\\ExecutionTracker.Fody.csproj",
+      "projectName": "ExecutionTracker.Fody",
+      "projectPath": "C:\\Users\\anusingh34\\source\\repos\\ConsoleApp2\\ExecutionTracker.Fody\\ExecutionTracker.Fody.csproj",
+      "packagesPath": "C:\\Users\\anusingh34\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\anusingh34\\source\\repos\\ConsoleApp2\\ExecutionTracker.Fody\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\anusingh34\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\Users\\anusingh34\\source\\repos\\ConsoleApp2\\ExecutionContextTracker\\ExecutionContextTracker.csproj": {
+              "projectPath": "C:\\Users\\anusingh34\\source\\repos\\ConsoleApp2\\ExecutionContextTracker\\ExecutionContextTracker.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "10.0.100"
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "Fody": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[6.9.3, )"
+          },
+          "Mono.Cecil": {
+            "target": "Package",
+            "version": "[0.11.6, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.25, 8.0.25]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.25, 8.0.25]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.25, 8.0.25]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

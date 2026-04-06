@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ConsoleApp2/ConsoleApp2.csproj" />
+  <Project Path="ExecutionContextTracker/ExecutionContextTracker.csproj" Id="f4d62ef1-bac3-4f59-a05c-ff3ef03ebcc7" />
+  <Project Path="ExecutionTracker.Fody/ExecutionTracker.Fody.csproj" Id="7c4a3c17-9593-42e3-84db-f16e8229392d" />
+</Solution>

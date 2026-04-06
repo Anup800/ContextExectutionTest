@@ -1,0 +1,11 @@
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\bin\Debug\net8.0\ExecutionContextTracker.deps.json
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\bin\Debug\net8.0\ExecutionContextTracker.dll
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\bin\Debug\net8.0\ExecutionContextTracker.pdb
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\ExecutionContextTracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\ExecutionContextTracker.AssemblyInfoInputs.cache
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\ExecutionContextTracker.AssemblyInfo.cs
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\ExecutionContextTracker.csproj.CoreCompileInputs.cache
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\ExecutionContextTracker.dll
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\refint\ExecutionContextTracker.dll
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\ExecutionContextTracker.pdb
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\ref\ExecutionContextTracker.dll
