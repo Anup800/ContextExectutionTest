@@ -1,65 +1,77 @@
-﻿//using Common.Logging;
 using ExecutionContextLib;
+using Fody;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
-using System.Linq;
 
-public class ModuleWeaver
+public class ModuleWeaver : BaseModuleWeaver
 {
-    public ModuleDefinition ModuleDefinition { get; set; }
-
-    public void Execute()
+    public override void Execute()
     {
-        Console.WriteLine( "Fody Execute");
+        WriteInfo("ExecutionTracker.Fody Execute");
+
         foreach (var type in ModuleDefinition.Types)
         {
             foreach (var method in type.Methods)
             {
-                if (!method.HasBody) continue;
+                if (!method.HasBody)
+                {
+                    continue;
+                }
 
                 var hasAttribute = method.CustomAttributes
                     .Any(a => a.AttributeType.Name == "TrackExecutionAttribute");
 
-                if (!hasAttribute) continue;
+                if (!hasAttribute)
+                {
+                    continue;
+                }
 
                 InjectExecutionContext(method);
             }
         }
     }
 
+    public override IEnumerable<string> GetAssembliesForScanning()
+    {
+        yield return "mscorlib";
+        yield return "System";
+        yield return "System.Runtime";
+        yield return "ExecutionContextTracker";
+    }
+
     private void InjectExecutionContext(MethodDefinition method)
     {
+        method.Body.SimplifyMacros();
+
         var il = method.Body.GetILProcessor();
         var first = method.Body.Instructions.First();
 
-        // Import CreateChild method
         var createChildMethod = ModuleDefinition.ImportReference(
-            typeof(ExecutionContextTracker).GetMethod("CreateChild")
+            typeof(ExecutionContextTracker).GetMethod(nameof(ExecutionContextTracker.CreateChild))
         );
 
         var disposeMethod = ModuleDefinition.ImportReference(
-            typeof(System.IDisposable).GetMethod("Dispose")
+            typeof(IDisposable).GetMethod(nameof(IDisposable.Dispose))
         );
 
-        // Create variable to hold IDisposable
-        var disposableVar = new VariableDefinition(
-            ModuleDefinition.ImportReference(typeof(System.IDisposable))
-        );
+        var disposableVar = new VariableDefinition(ModuleDefinition.ImportReference(typeof(IDisposable)));
         method.Body.Variables.Add(disposableVar);
-
         method.Body.InitLocals = true;
 
-        // Insert: var scope = ExecutionContextTracker.CreateChild();
+        // scope = ExecutionContextTracker.CreateChild();
         il.InsertBefore(first, il.Create(OpCodes.Call, createChildMethod));
         il.InsertBefore(first, il.Create(OpCodes.Stloc, disposableVar));
 
-        // Wrap in try/finally (simplified version)
-        var end = method.Body.Instructions.Last();
+        // Call Dispose before each return.
+        var returns = method.Body.Instructions.Where(i => i.OpCode == OpCodes.Ret).ToList();
+        foreach (var ret in returns)
+        {
+            il.InsertBefore(ret, il.Create(OpCodes.Ldloc, disposableVar));
+            il.InsertBefore(ret, il.Create(OpCodes.Brfalse_S, ret));
+            il.InsertBefore(ret, il.Create(OpCodes.Ldloc, disposableVar));
+            il.InsertBefore(ret, il.Create(OpCodes.Callvirt, disposeMethod));
+        }
 
-        var finallyStart = il.Create(OpCodes.Ldloc, disposableVar);
-        il.Append(finallyStart);
-        il.Append(il.Create(OpCodes.Callvirt, disposeMethod));
-
-        // NOTE: full try/finally weaving is complex — this is simplified
+        method.Body.OptimizeMacros();
     }
 }
