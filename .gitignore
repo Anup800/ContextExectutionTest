@@ -1,2 +1,7 @@
-
-.vs
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.cache
+*.AssemblyInfo.cs
