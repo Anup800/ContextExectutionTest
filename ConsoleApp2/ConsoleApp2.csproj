@@ -1,14 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <ProjectReference Include="..\ExecutionContextTracker\ExecutionContextTracker.csproj" />
-  </ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <PackageReference Include="Fody" Version="6.9.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.150" />
     <WeaverFiles Include="..\ExecutionTracker.Fody\bin\$(Configuration)\net8.0\ExecutionTracker.Fody.dll" />
   </ItemGroup>
 
