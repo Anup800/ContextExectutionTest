@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExecutionTracker.Fody")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+205e54af1ef29b39d88926ce498be74bfa446558")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExecutionTracker.Fody")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExecutionTracker.Fody")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

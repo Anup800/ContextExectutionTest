@@ -1,40 +1,30 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ConsoleApp2
 {
+    // TraceContext.cs
     public static class TraceContext
     {
-        private static AsyncLocal<string> _currentId = new AsyncLocal<string>();
-        private static AsyncLocal<Dictionary<string, int>> _childCounters = new AsyncLocal<Dictionary<string, int>>();
+        private static readonly AsyncLocal<string> _currentId = new AsyncLocal<string>();
 
-        public static string CurrentId
-        {
-            get => _currentId.Value ?? "1";
-            set => _currentId.Value = value;
-        }
+        // ConcurrentDictionary: lives outside AsyncLocal, thread-safe atomic increment
+        private static readonly ConcurrentDictionary<string, int> _counters
+            = new ConcurrentDictionary<string, int>();
+
+        public static string CurrentId => _currentId.Value ?? string.Empty;
 
         public static string CreateChild()
         {
             var parentId = CurrentId;
-
-            if (_childCounters.Value == null)
-                _childCounters.Value = new Dictionary<string, int>();
-
-            if (!_childCounters.Value.ContainsKey(parentId))
-                _childCounters.Value[parentId] = 0;
-
-            _childCounters.Value[parentId]++;
-
-            var childIndex = _childCounters.Value[parentId];
-
-            return $"{parentId}.{childIndex}";
+            var index = _counters.AddOrUpdate(parentId, 1, (_, old) => old + 1);
+            return string.IsNullOrEmpty(parentId) ? $"{index}" : $"{parentId}.{index}";
         }
 
-        public static void Set(string id)
-        {
-            _currentId.Value = id;
-        }
+        public static void Set(string id) => _currentId.Value = id;
+
+        public static void Reset() => _counters.Clear(); // call between test runs
     }
 }

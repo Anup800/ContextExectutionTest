@@ -13,4 +13,7 @@
     <SourceRoot Include="C:\Users\anusingh34\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)fodyhelpers\6.9.3\build\FodyHelpers.props" Condition="Exists('$(NuGetPackageRoot)fodyhelpers\6.9.3\build\FodyHelpers.props')" />
+  </ImportGroup>
 </Project>

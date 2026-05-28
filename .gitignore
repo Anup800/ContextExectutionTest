@@ -1,7 +1,27 @@
 bin/
 obj/
 .vs/
+**/obj/
 *.user
 *.suo
 *.cache
 *.AssemblyInfo.cs
+*.deps.json
+*.runtimeconfig.json
+*.dll
+*.exe
+*.pdb
+*.nuget.dgspec.json
+*.csproj.nuget.g.props
+*.csproj.nuget.g.targets
+project.assets.json
+project.nuget.cache
+*.GeneratedMSBuildEditorConfig.editorconfig
+*.GlobalUsings.g.cs
+*.sourcelink.json
+*.Up2Date
+*.targets
+*.props
+# Fody
+FodyWeavers.xsd
+*.Fody.*

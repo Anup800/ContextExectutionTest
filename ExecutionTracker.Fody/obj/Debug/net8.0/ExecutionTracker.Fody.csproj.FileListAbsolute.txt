@@ -2,7 +2,6 @@ C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\ExecutionTracker.Fody.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\ExecutionTracker.Fody.AssemblyInfoInputs.cache
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\ExecutionTracker.Fody.AssemblyInfo.cs
-C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\ExecutionTracker.Fody.csproj.CoreCompileInputs.cache
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\ExecutionTracker.Fody.dll
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\refint\ExecutionTracker.Fody.dll
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\ExecutionTracker.Fody.pdb
@@ -13,3 +12,5 @@ C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\bin\Debug\net
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\bin\Debug\net8.0\ExecutionContextTracker.pdb
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\Executio.FE27F604.Up2Date
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\ref\ExecutionTracker.Fody.dll
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\ExecutionTracker.Fody.csproj.CoreCompileInputs.cache
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionTracker.Fody\obj\Debug\net8.0\ExecutionTracker.Fody.sourcelink.json

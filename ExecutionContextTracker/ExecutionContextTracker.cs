@@ -2,49 +2,71 @@
 
 public static class ExecutionContextTracker
 {
-    private static AsyncLocal<string> _current = new();
-    private static AsyncLocal<int> _childCounter = new();
+    private static readonly AsyncLocal<ExecutionState> _state = new();
 
-    public static string Current => _current.Value ?? "Th.1";
+    // Holds both the current ID and a thread-safe sibling counter
+    private sealed class ExecutionState
+    {
+        public string Id { get; }
+
+        // Counter lives on the PARENT state, not the child
+        // so siblings all increment the same counter correctly
+        private int _childCount;
+
+        public ExecutionState(string id)
+        {
+            Id = id;
+        }
+
+        public int NextChildIndex() => Interlocked.Increment(ref _childCount);
+    }
+
+    public static string Current => _state.Value?.Id ?? "Th.1";
 
     public static IDisposable StartRoot()
     {
-        _current.Value = "Th.1";
-        _childCounter.Value = 0;
-        return new Scope(null, 0);
+        var root = new ExecutionState("Th.1");
+        var previous = _state.Value;
+        _state.Value = root;
+        return new Scope(previous);
     }
 
     public static IDisposable CreateChild()
     {
-        var parent = _current.Value ?? "Th.1";
+        var parentState = _state.Value;
 
-        int next = ++_childCounter.Value;
-        string child = $"{parent}.{next}";
+        // If no root was started, auto-create one
+        if (parentState == null)
+        {
+            parentState = new ExecutionState("Th.1");
+        }
 
-        var previous = _current.Value;
-        var previousCounter = _childCounter.Value;
+        // Child index comes from parent's counter — siblings share it correctly
+        int index = parentState.NextChildIndex();
+        string childId = $"{parentState.Id}.{index}";
 
-        _current.Value = child;
-        _childCounter.Value = 0;
+        var childState = new ExecutionState(childId);
+        var previous = _state.Value;
+        _state.Value = childState;
 
-        return new Scope(previous, previousCounter);
+        return new Scope(previous); // restore parent on Dispose
     }
 
-    private class Scope : IDisposable
+    private sealed class Scope : IDisposable
     {
-        private readonly string _prev;
-        private readonly int _prevCounter;
+        private readonly ExecutionState _previous;
+        private bool _disposed;
 
-        public Scope(string prev, int prevCounter)
+        public Scope(ExecutionState previous)
         {
-            _prev = prev;
-            _prevCounter = prevCounter;
+            _previous = previous;
         }
 
         public void Dispose()
         {
-            _current.Value = _prev;
-            _childCounter.Value = _prevCounter;
+            if (_disposed) return;
+            _disposed = true;
+            _state.Value = _previous; // restore parent state cleanly
         }
     }
 }

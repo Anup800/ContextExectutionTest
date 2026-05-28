@@ -9,3 +9,4 @@ C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\n
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\refint\ExecutionContextTracker.dll
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\ExecutionContextTracker.pdb
 C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\ref\ExecutionContextTracker.dll
+C:\Users\anusingh34\source\repos\ConsoleApp2\ExecutionContextTracker\obj\Debug\net8.0\ExecutionContextTracker.sourcelink.json

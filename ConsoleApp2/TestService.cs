@@ -11,14 +11,14 @@ namespace ConsoleApp2
         [Log]
         public async Task<int> RunSequential()
         {
-           // Console.WriteLine($"[SEQ START] Thread: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"[SEQ START] Thread: {Thread.CurrentThread.ManagedThreadId}");
 
             var r1 = await Method1();
             var r2 = await Method2();
             var r3 = await Method3();
             int r4 = await RunParallel();
 
-            //Console.WriteLine($"[SEQ END] Thread: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"[SEQ END] Thread: {Thread.CurrentThread.ManagedThreadId}");
             
             return r1 + r2 + r3;
         }
@@ -26,7 +26,7 @@ namespace ConsoleApp2
         [Log]
         public async Task<int> RunParallel()
         {
-            //Console.WriteLine($"[PARALLEL START] Thread: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"[PARALLEL START] Thread: {Thread.CurrentThread.ManagedThreadId}");
 
             var tasks = new List<Task<int>>
         {
@@ -37,27 +37,27 @@ namespace ConsoleApp2
 
             var results = await Task.WhenAll(tasks);
 
-            //Console.WriteLine($"[PARALLEL END] Thread: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"[PARALLEL END] Thread: {Thread.CurrentThread.ManagedThreadId}");
 
             return results.Sum();
         }
 
-        [Log]
-        public async Task<int> RunWithException()
-        {
-           // Console.WriteLine($"[EXCEPTION TEST START] Thread: {Thread.CurrentThread.ManagedThreadId}");
+        //[Log]
+        //public async Task<int> RunWithException()
+        //{
+        //   Console.WriteLine($"[EXCEPTION TEST START] Thread: {Thread.CurrentThread.ManagedThreadId}");
 
-            var tasks = new List<Task<int>>
-        {
-            Method1(),
-            MethodWithException(), // 💥 this will throw
-            Method3()
-        };
+        //    var tasks = new List<Task<int>>
+        //{
+        //    Method1(),
+        //    MethodWithException(), // 💥 this will throw
+        //    Method3()
+        //};
 
-            var results = await Task.WhenAll(tasks); // will trigger OnException
+        //    var results = await Task.WhenAll(tasks); // will trigger OnException
 
-            return results.Sum();
-        }
+        //    return results.Sum();
+        //}
 
         [Log]
         public async Task<int> Method1()
@@ -80,22 +80,26 @@ namespace ConsoleApp2
             return 3;
         }
 
-        [Log]
-        public async Task<int> MethodWithException()
-        {
-            await SimulateWork("MethodWithException");
-            throw new Exception("Something went wrong!");
-        }
+        //[Log]
+        //public async Task<int> MethodWithException()
+        //{
+        //    await SimulateWork("MethodWithException");
+        //    throw new Exception("Something went wrong!");
+        //}
 
         private async Task<int> SimulateWork(string methodName)
         {
-            int delay = _random.Next(500, 1500);
-
-            //Co/nsole.WriteLine(
-               // $"{methodName} START - Thread: {Thread.CurrentThread.ManagedThreadId}, Delay: {delay}");
-
-            await Task.Delay(delay);
-            return 0;
+            try
+            {
+                
+                Task.Delay(1000);
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+                return 0;
+            }
 
            // Console.WriteLine(
               //  $"{methodName} END   - Thread: {Thread.CurrentThread.ManagedThreadId}");

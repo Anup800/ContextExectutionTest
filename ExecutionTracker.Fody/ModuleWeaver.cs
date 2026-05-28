@@ -2,6 +2,7 @@ using ExecutionContextLib;
 using Fody;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
+using Mono.Cecil.Rocks;
 
 public class ModuleWeaver : BaseModuleWeaver
 {
